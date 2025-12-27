@@ -1,13 +1,12 @@
-// components/PageLoader.jsx
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PageLoader() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const isFirstLoad = useRef(true);
 
@@ -24,7 +23,7 @@ export default function PageLoader() {
     }, 1000); 
 
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return (
     <AnimatePresence>
