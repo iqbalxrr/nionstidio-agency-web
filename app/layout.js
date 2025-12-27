@@ -7,6 +7,7 @@ import React from "react";
 import Preloader from "../components/Preloader";   // প্রথমবার লোড হওয়ার জন্য
 import PageLoader from "../components/PageLoader"; 
 import Footer from "../components/Footer";
+import PageTransition from "../components/PageTransition";
 
 // ২. Poppins (ইংরেজি) কনফিগারেশন
 const poppins = Poppins({
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${hindSiliguri.variable} flex flex-col min-h-screen text-white bg-black`}
       >
+        <PageTransition>
         <LanguageProvider>
           <Preloader /> {/* রিফ্রেশ দিলে কাজ করবে (৩.৫ সেকেন্ড) */}
           <PageLoader /> {/* লিংকে ক্লিক করলে কাজ করবে (১ সেকেন্ড) */}
@@ -42,6 +44,7 @@ export default function RootLayout({ children }) {
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
+        </PageTransition>
       </body>
     </html>
   );
